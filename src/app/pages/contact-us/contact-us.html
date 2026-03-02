@@ -111,25 +111,46 @@
       <form>
 
         <div class="form-row">
-          <input type="text" placeholder="Your name">
-          <select>
-            <option>Type of service</option>
-          </select>
+          <div class="form-field">
+            <i class="fas fa-user field-icon" aria-hidden="true"></i>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-field">
+            <i class="fas fa-tools field-icon" aria-hidden="true"></i>
+            <select>
+              <option>Type of service</option>
+            </select>
+          </div>
         </div>
 
         <div class="form-row">
-          <input type="text" placeholder="Address">
-          <select>
-            <option>Location</option>
-          </select>
+          <div class="form-field">
+            <i class="fas fa-map-marker-alt field-icon" aria-hidden="true"></i>
+            <input type="text" placeholder="Address">
+          </div>
+          <div class="form-field">
+            <i class="fas fa-location-arrow field-icon" aria-hidden="true"></i>
+            <select>
+              <option>Location</option>
+            </select>
+          </div>
         </div>
 
         <div class="form-row">
-          <input type="text" placeholder="Your city">
-          <input type="text" placeholder="Warranty">
+          <div class="form-field">
+            <i class="fas fa-city field-icon" aria-hidden="true"></i>
+            <input type="text" placeholder="Your city">
+          </div>
+          <div class="form-field">
+            <i class="fas fa-shield-alt field-icon" aria-hidden="true"></i>
+            <input type="text" placeholder="Warranty">
+          </div>
         </div>
 
-        <textarea placeholder="Service description"></textarea>
+        <div class="form-field textarea-field">
+          <i class="fas fa-comment-dots field-icon" aria-hidden="true"></i>
+          <textarea placeholder="Service description"></textarea>
+        </div>
 
         <button type="submit" class="submit-btn">
           SCHEDULE NOW

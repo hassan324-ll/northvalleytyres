@@ -260,13 +260,35 @@
   margin-bottom: 20px;
 }
 
+.form-field {
+  position: relative;
+  width: 100%;
+}
+
+.field-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #009FE3;
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.textarea-field .field-icon {
+  top: 16px;
+  transform: none;
+}
+
 input,
 select,
 textarea {
   width: 100%;
-  padding: 12px;
+  padding: 12px 12px 12px 36px;
   border: 1px solid #ddd;
   background: #f9f9f9;
+  border-radius: 6px;
 }
 
 textarea {

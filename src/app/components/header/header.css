@@ -18,6 +18,36 @@
 }
 
 /* ===============================
+   TOP LOCATION STRIP
+================================= */
+.top-location-strip {
+  background: #009FE3;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.top-location-inner {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 28px;
+}
+
+.top-location-text {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.top-location-icon {
+  font-size: 13px;
+  margin-right: 6px;
+  font-family: "Font Awesome 7 Free" !important;
+  font-weight: 900;
+  display: inline-block;
+}
+
+/* ===============================
    TOP HEADER
 ================================= */
 .top-bar {
@@ -237,6 +267,16 @@
     background: #009fe3;
   }
 
+  .top-location-inner {
+    justify-content: center;
+    min-height: 30px;
+  }
+
+  .top-location-text {
+    font-size: 12px;
+    text-align: center;
+  }
+
   .top-bar {
     width: 100%;
     padding: 14px 16px;
@@ -329,6 +369,10 @@
 @media (max-width: 560px) {
   .navbar .container {
     width: 92%;
+  }
+
+  .top-location-text {
+    font-size: 11px;
   }
 
   .top-bar {
