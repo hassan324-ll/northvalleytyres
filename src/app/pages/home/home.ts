@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LocationDetails } from "../../components/location-details/location-details";
 import { FeatureCarousel } from "../../components/feature-carousel/feature-carousel";
@@ -10,12 +10,13 @@ import { FeatureCarousel } from "../../components/feature-carousel/feature-carou
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {
+export class Home implements OnDestroy {
+  constructor(@Inject(DOCUMENT) private readonly document: Document) {}
 
   private readonly businessStartYear = 1998;
   readonly yearsOfExperience = Math.max(new Date().getFullYear() - this.businessStartYear, 0);
 
-  selectedImage: string | null = null;
+  selectedImageIndex: number | null = null;
 
   images = [
     { src: '/homegallery1.jpg', title: 'Best Service' },
@@ -35,12 +36,40 @@ export class Home {
 
   ];
 
-  openImage(src: string) {
-    this.selectedImage = src;
+  get selectedImage(): string | null {
+    if (this.selectedImageIndex === null) {
+      return null;
+    }
+    return this.images[this.selectedImageIndex]?.src ?? null;
+  }
+
+  openImage(index: number) {
+    this.selectedImageIndex = index;
+    this.document.body.classList.add('lightbox-open');
   }
 
   closeImage() {
-    this.selectedImage = null;
+    this.selectedImageIndex = null;
+    this.document.body.classList.remove('lightbox-open');
+  }
+
+  prevImage() {
+    if (this.selectedImageIndex === null) {
+      return;
+    }
+    this.selectedImageIndex =
+      (this.selectedImageIndex - 1 + this.images.length) % this.images.length;
+  }
+
+  nextImage() {
+    if (this.selectedImageIndex === null) {
+      return;
+    }
+    this.selectedImageIndex = (this.selectedImageIndex + 1) % this.images.length;
+  }
+
+  ngOnDestroy() {
+    this.document.body.classList.remove('lightbox-open');
   }
 }
 

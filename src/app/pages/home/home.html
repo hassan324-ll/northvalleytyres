@@ -224,7 +224,7 @@
 
 <!-- image gallery section -->
 <div class="gallery">
-  <div class="gallery-item" *ngFor="let image of images" (click)="openImage(image.src)">
+  <div class="gallery-item" *ngFor="let image of images; let i = index" (click)="openImage(i)">
     <img [src]="image.src" [alt]="image.title" />
     <div class="overlay">
       {{ image.title }}
@@ -234,7 +234,13 @@
 
 <!-- LIGHTBOX -->
 <div class="lightbox" *ngIf="selectedImage" (click)="closeImage()">
-  <span class="close-btn" (click)="closeImage()">✕</span>
+  <button class="nav-btn prev-btn" (click)="$event.stopPropagation(); prevImage()">
+    &#10094;
+  </button>
+  <button class="nav-btn next-btn" (click)="$event.stopPropagation(); nextImage()">
+    &#10095;
+  </button>
+  <span class="close-btn" (click)="$event.stopPropagation(); closeImage()">&#10005;</span>
   <img [src]="selectedImage" (click)="$event.stopPropagation()" />
 </div>
 
