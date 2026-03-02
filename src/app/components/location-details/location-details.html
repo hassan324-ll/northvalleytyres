@@ -1,0 +1,89 @@
+<section class="contact-section">
+  <div class="contact-shell">
+    <div class="map-panel">
+      <iframe
+        title="Colne Tyre Centre Map"
+        src="https://www.google.com/maps?q=53.8593123,-2.1731484&hl=en&z=16&output=embed"
+        loading="lazy"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="details-panel">
+      <h2 class="panel-title">CONTACT US</h2>
+
+      <div class="details-grid">
+        <div class="details-col">
+          <div class="info-block">
+            <h3 class="info-title"><i class="fas fa-map-marker-alt info-icon" aria-hidden="true"></i>ADDRESS</h3>
+            <div class="accent-line"></div>
+            <p>MS Repairs</p>
+            <p>Hey Street</p>
+            <p>Nelson, BB9 9XH</p>
+            <p>Lancashire, United Kingdom</p>
+          </div>
+
+          <div class="info-block">
+            <h3 class="info-title"><i class="fas fa-phone-alt info-icon" aria-hidden="true"></i>TEL</h3>
+            <div class="accent-line"></div>
+            <p class="tel-row">01282 914144 / 07870 255978</p>
+          </div>
+
+          <div class="info-block">
+            <h3 class="info-title"><i class="fas fa-envelope info-icon" aria-hidden="true"></i>EMAIL</h3>
+            <div class="accent-line"></div>
+            <!-- <p>Emails:</p> -->
+            <p>For services:</p>
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=service@nvtyres.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >service@nvtyres.com</a
+            >
+            <p>For contact:</p>
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=info@nvtyres.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              >info@nvtyres.com</a
+            >
+          </div>
+        </div>
+
+        <div class="details-col">
+          <div class="info-block">
+            <h3>OPENING HOURS</h3>
+            <div class="accent-line"></div>
+
+            <div class="hours-table">
+              <div class="hours-row"><span>Monday</span><span>10.00 am - 5.00 pm</span></div>
+              <div class="hours-row"><span>Tuesday</span><span>10.00 am - 5.00 pm</span></div>
+              <div class="hours-row"><span>Wednesday</span><span>10.00 am - 5.00 pm</span></div>
+              <div class="hours-row"><span>Thursday</span><span>10.00 am - 5.00 pm</span></div>
+              <div class="hours-row"><span>Friday</span><span>10.00 am - 5.00 pm</span></div>
+              <div class="hours-row"><span>Saturday</span><span>10.00 am - 5.00 pm</span></div>
+              <div class="hours-row closed"><span>Sunday</span><span>Closed</span></div>
+            </div>
+          </div>
+
+          <div class="info-block directions-block">
+            <h3>FIND DIRECTIONS</h3>
+            <div class="accent-line"></div>
+            <form class="route-form" (submit)="openDirections(originInput.value); $event.preventDefault()">
+              <input
+                #originInput
+                class="route-input"
+                type="text"
+                placeholder="Enter your location"
+                aria-label="Your location"
+              />
+              <button type="submit" class="route-arrow" aria-label="Get directions">&rsaquo;</button>
+            </form>
+            <!-- <p class="route-hint">Destination: North Valley Road, Colne</p> -->
+            <p class="route-error" *ngIf="directionError">{{ directionError }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

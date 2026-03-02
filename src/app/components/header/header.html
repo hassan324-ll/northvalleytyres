@@ -1,0 +1,78 @@
+<header class="top-header" [class.desktop-nav-sticky]="isDesktopNavSticky">
+  <div class="container top-bar">
+    <div class="logo">
+      <!-- <img routerLink="/home" src="/logo.png" alt="Colne Tyre Centre" /> -->
+    </div>
+
+    <button
+      type="button"
+      class="menu-toggle"
+      (click)="toggleMobileMenu()"
+      [attr.aria-expanded]="isMobileMenuOpen"
+      aria-label="Toggle navigation menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="contact">
+      <span class="contact-label">CONTACT NUMBER</span>
+      <span class="contact-number">01234 567 899</span>
+    </div>
+  </div>
+
+  <nav class="navbar">
+    <div class="container nav-container">
+      <ul class="nav-links" [class.mobile-open]="isMobileMenuOpen">
+        <li><a routerLink="/home" (click)="closeMobileMenu()">HOME</a></li>
+        <li><a routerLink="/price-match" (click)="closeMobileMenu()">PRICE MATCH</a></li>
+
+        <li class="dropdown">
+          <a routerLink="/tyres" (click)="closeMobileMenu()" class="nav-with-arrow">TYRES <span class="nav-arrow">&#9662;</span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/new-tyre" (click)="closeMobileMenu()">New Tyre</a></li>
+            <li><a routerLink="/wheel-alignment-balancing" (click)="closeMobileMenu()">Wheel Alignment Balancing</a></li>
+            <li><a routerLink="/adas" (click)="closeMobileMenu()">Adas radar calibration</a></li>
+          </ul>
+        </li>
+
+        <li><a routerLink="/adas" (click)="closeMobileMenu()">ADAS</a></li>
+
+        <li class="dropdown">
+          <a routerLink="/valeting" (click)="closeMobileMenu()" class="nav-with-arrow">VALETING <span class="nav-arrow">&#9662;</span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/mini-car-valet" (click)="closeMobileMenu()">Mini car valet in colne</a></li>
+            <li><a routerLink="/full-car-valet" (click)="closeMobileMenu()">Full car valet in colne</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a routerLink="/mobile-fitting" (click)="closeMobileMenu()" class="nav-with-arrow">MOBILE FITTING <span class="nav-arrow">&#9662;</span></a>
+          <ul class="dropdown-menu">
+            <li><a routerLink="/adas" (click)="closeMobileMenu()">Adas Radar Calibration</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a routerLink="/events" (click)="closeMobileMenu()" class="nav-with-arrow">EVENTS <span class="nav-arrow">&#9662;</span></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-sub">
+              <a routerLink="/tyres-gallery" (click)="closeMobileMenu()" class="nav-with-arrow">Gallery <span class="nav-arrow">&#9662;</span></a>
+              
+              <ul class="dropdown-sub-menu">
+                <li><a routerLink="/tyres-gallery" (click)="closeMobileMenu()">Tyres</a></li>
+                <li><a routerLink="/valeting-gallery" (click)="closeMobileMenu()">Valeting</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li><a routerLink="/about-us" (click)="closeMobileMenu()">ABOUT US</a></li>
+        <li><a routerLink="/contact-us" (click)="closeMobileMenu()">CONTACT US</a></li>
+      </ul>
+
+      <button routerLink="/contact-us" class="schedule-btn">SCHEDULE SERVICE</button>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,425 @@
+.heading-wrapper{
+    padding: 35px 60 15px 60px;
+}
+.page-title{
+    font-size: 40px;
+    font-weight: 500;
+    color: black;
+    margin-bottom: 15px;
+    margin-top: 40px;
+    margin-left: 35px;
+
+}
+
+/* banner  */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.about-banner {
+  width: 100%;
+  height: 380px;
+  background: url("/aboutbanner.avif") center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.about-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.overlay {
+  position: relative;
+  color: #fff;
+}
+
+/* ABOUT US Styling */
+.overlay h1 {
+  font-size: 72px;
+  font-style: bold;
+  font-family: 'pacifico', sans-serif;
+  font-weight: 800;   /* Extra bold */
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+/* Blue handwritten text */
+.tagline {
+  font-family: 'Pacifico', cursive;
+  font-size: 48px;
+  color: #00a8e8;
+  font-weight: normal;
+}
+
+@media (max-width: 1024px) {
+  .about-banner {
+    height: 320px;
+  }
+
+  .overlay h1 {
+    font-size: 52px;
+    margin-bottom: 14px;
+  }
+
+  .overlay p,
+  .tagline {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-banner {
+    height: 260px;
+  }
+
+  .overlay h1 {
+    font-size: 38px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+
+  .overlay p,
+  .tagline {
+    font-size: 24px;
+    line-height: 1.25;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-banner {
+    height: 220px;
+  }
+
+  .overlay h1 {
+    font-size: 30px;
+  }
+
+  .overlay p,
+  .tagline {
+    font-size: 19px;
+  }
+}
+/* section one */
+.team-section{
+    padding: 60px 0;
+
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+.team-description{
+    font-size: 20px;
+    line-height: 1.8;
+    color: #1b1c1b;
+    margin-bottom: 50px;
+}
+
+/* team row */
+.team-row{
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+/* team card */
+
+.team-card{
+    flex: 1;
+    max-width: 450px;
+    border: 0px solid rgba(0, 159, 227, 0.25);
+    border-radius: 8px;
+    padding: 18px;
+    box-shadow: 0 10px 24px rgba(0, 159, 227, 0.1);
+    background: #fff;
+}
+.team-card img{
+    width: 70%;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+.team-card h3{
+    font-size: 22px;
+    color: black;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.team-card span{
+    font-size: 16px;
+    color: black;
+    display: block;
+}
+/* bottom line */
+.bottom-line{
+    margin-top: 50px;
+    border: none;
+    border-top: 2px solid black;
+}
+
+/* responsiveness */
+@media(max-width: 768px){
+    .team-row{
+        flex-direction: column;
+        gap: 40px;
+    }
+    .team-card{
+        max-width: 100%;
+    }
+    .container{
+        padding: 0 20px;
+    }
+}
+
+
+/* why choose us section */
+.why-section{
+    padding: 80px 0;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* section header */
+.section-header{
+    margin-bottom: 50px;
+}
+
+.small-title{
+    font-size: 13px;
+    color: black;
+    letter-spacing: 1px;
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.small-title::after{
+    content: "";
+    width: 50px;
+    height: 2px;
+    background: black;
+    display: inline-block;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+
+.section-header h2{
+    font-size: 40px;
+    color: black;
+    font-weight: 500;
+}
+
+/* row */
+.why-row{
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+
+/* card */
+.why-card{
+    flex: 1;
+    max-width: 520px;
+    border: 0px solid rgba(0, 159, 227, 0.25);
+    border-radius: 8px;
+    padding: 18px;
+    box-shadow: 0 10px 24px rgba(0, 159, 227, 0.1);
+    background: #fff;
+
+}
+
+.why-card img{
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    margin-bottom: 25px;
+    border-radius: 15px;
+}
+
+.why-card h3{
+    font-size: 25px;
+    color: black;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.why-card p{
+    font-size: 20px;
+    line-height: 1.8;
+    color: #1b1c1b;
+}
+
+/* responsiveness */
+@media(max-width: 768px){
+   .why-row{
+    flex-direction: column;
+    gap: 40px;
+   }
+
+   .container{
+    padding: 0 20px;
+   }
+
+   .section-header h2{
+    font-size: 32px;
+   }
+}
+
+/* Tablet + Mobile only overrides (desktop unchanged) */
+@media (max-width: 1024px) {
+  .heading-wrapper {
+    padding: 26px 20px 10px;
+  }
+
+  .page-title {
+    margin-top: 24px;
+    margin-left: 0;
+    margin-bottom: 12px;
+    font-size: 30px;
+  }
+
+  .team-section,
+  .why-section {
+    padding: 48px 0;
+  }
+
+  .team-section .container,
+  .why-section .container {
+    width: 97%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+  }
+
+  .team-description {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+  }
+
+  .team-row,
+  .why-row {
+    gap: 26px;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .team-card,
+  .why-card {
+    flex: 1;
+    max-width: none;
+    width: 100%;
+    text-align: center;
+  }
+
+  .team-card img {
+    width: 100%;
+    height: 260px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .why-card img {
+    width: 100%;
+    height: 280px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .small-title::after {
+    display: none;
+  }
+
+  .section-header h2 {
+    font-size: 34px;
+  }
+
+  .why-card p {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading-wrapper {
+    padding: 18px 14px 8px;
+  }
+
+  .page-title {
+    font-size: 25px;
+    margin-top: 14px;
+  }
+
+  .team-section .container,
+  .why-section .container {
+    width: 97%;
+  }
+
+  .team-row,
+  .why-row {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .team-card img {
+    height: 220px;
+  }
+
+  .why-card img {
+    height: 230px;
+  }
+
+  .team-card h3,
+  .why-card h3 {
+    font-size: 22px;
+  }
+
+  .team-description,
+  .why-card p {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .section-header h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 22px;
+  }
+
+  .team-card img {
+    height: 190px;
+  }
+
+  .why-card img {
+    height: 200px;
+  }
+
+  .team-card h3,
+  .why-card h3 {
+    font-size: 20px;
+  }
+
+  .team-description,
+  .why-card p {
+    font-size: 15px;
+  }
+}

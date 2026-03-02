@@ -1,0 +1,40 @@
+  <div class="heading-wrapper">
+    <h2 class="page-title">Valeting Gallery</h2>
+    <hr class="title-line">
+  </div>
+
+
+  <!-- gallery section -->
+   <section class="gallery-section">
+  <div class="container">
+
+    <div class="gallery-grid">
+      <div 
+        *ngFor="let image of images; let i = index"
+        class="gallery-item"
+        [ngClass]="i % 3 === 1 ? 'tall' : 'small'"
+        [style.backgroundImage]="'url(' + image + ')'"
+        (click)="openModal(i)">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MODAL -->
+  <div class="gallery-modal" *ngIf="isOpen">
+    
+    <span class="close-btn" (click)="closeModal()">×</span>
+
+    <span class="arrow left" (click)="prevImage()">❮</span>
+
+    <img [src]="images[currentIndex]" class="modal-image">
+
+    <span class="arrow right" (click)="nextImage()">❯</span>
+
+  </div>
+
+</section>
+
+
+
+  <app-location-details></app-location-details>

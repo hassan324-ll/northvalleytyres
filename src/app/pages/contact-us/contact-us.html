@@ -1,0 +1,143 @@
+
+<section class="about-banner">
+  <div class="overlay">
+    <h1>CONTACT US</h1>
+    <p class="tagline">lets get in touch</p>
+  </div>
+</section>
+
+<!-- map -->
+  <div class="contact-map">
+      <iframe
+        src="https://www.google.com/maps?q=53.8593123,-2.1731484&hl=en&z=17&output=embed"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- 2nd section -->
+<section class="contact-section">
+  <div class="container contact-wrapper">
+
+    <!-- LEFT SIDE -->
+    <div class="contact-left">
+
+      <!-- TABS -->
+      <div class="contact-tabs">
+        <button 
+          [class.active]="activeTab === 'call'" 
+          (click)="setTab('call')">
+          CALL US NOW AT
+        </button>
+
+        <button 
+          [class.active]="activeTab === 'find'" 
+          (click)="setTab('find')">
+          FIND US
+        </button>
+
+        <button 
+          [class.active]="activeTab === 'mobile'" 
+          (click)="setTab('mobile')">
+          MOBILE TYRE FITTING 24/7
+        </button>
+      </div>
+
+      <!-- CALL TAB -->
+      <div class="tab-content" *ngIf="activeTab === 'call'">
+        <div class="info-item">
+          <div class="info-text">
+            <p><strong>Email:</strong> service@nvtyres.com </p>
+            <!-- <p>Emergency Mobile Tyre Fitting</p> -->
+            <p><strong>For Contact:</strong> info@nvtyres.com</p>
+          </div>
+          <div class="icon-circle">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- FIND TAB -->
+      <div class="tab-content" *ngIf="activeTab === 'find'">
+        <div class="info-item">
+          <div class="info-text">
+            <p>North Valley Road</p>
+            <p>Colne, Lancashire, </p>
+            <p> BB8 9AG,</p>
+          </div>
+          <div class="icon-circle">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOBILE TAB -->
+      <div class="tab-content" *ngIf="activeTab === 'mobile'">
+        <div class="info-item">
+          <div class="info-text">
+            <p>24/7 Mobile Tyre Fitting</p>
+            <p>Fast Response</p>
+            <p>Covering All Surrounding Areas</p>
+          </div>
+          <div class="icon-circle">
+            <i class="fas fa-truck"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- OUR SERVICES -->
+      <div class="our-services">
+        <h4>OUR SERVICES</h4>
+        <ul>
+          <li>Tyres</li>
+          <li>Alignment & Balancing</li>
+          <li>Mini Valeting</li>
+          <li>Full Valeting</li>
+          <li>Mobile Tyre Fitting</li>
+          <li>ADAS Radar Calibration</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="contact-right">
+
+      <div class="form-header">
+        <span>NEED A HAND?</span>
+        <h2>Contact us</h2>
+      </div>
+
+      <form>
+
+        <div class="form-row">
+          <input type="text" placeholder="Your name">
+          <select>
+            <option>Type of service</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <input type="text" placeholder="Address">
+          <select>
+            <option>Location</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <input type="text" placeholder="Your city">
+          <input type="text" placeholder="Warranty">
+        </div>
+
+        <textarea placeholder="Service description"></textarea>
+
+        <button type="submit" class="submit-btn">
+          SCHEDULE NOW
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>

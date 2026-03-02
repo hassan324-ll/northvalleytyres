@@ -1,0 +1,147 @@
+.footer {
+  background-color: #009FE3;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 50px;
+  width: 100%;
+}
+
+/* =========================
+   SOCIAL SECTION
+========================= */
+
+.social-section {
+  text-align: center;
+  padding: 100px 20px 40px;
+  width: 100%;
+}
+
+.social-section h3 {
+  color: white;
+  font-weight: 500;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+/* Social Icons */
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.social-icons a {
+  width: 45px;
+  height: 45px;
+  background: #1e293b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+/* ICON COLOR WHITE */
+.social-icons a i {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+/* Hover */
+.social-icons a:hover {
+  background: #334155;
+  transform: translateY(-4px);
+}
+
+.social-icons a:hover i {
+  color: #ffffff;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider {
+  border-top: 1px solid white;
+}
+
+/* =========================
+   BOTTOM BAR
+========================= */
+
+.bottom-bar {
+  padding: 25px 0;
+  width: 100%;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.bottom-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.bottom-container span {
+  color: white;
+}
+
+.bottom-container a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.bottom-container a:hover {
+  color: #f1f5f9;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1024px) {
+  .social-section {
+    padding: 80px 20px 35px;
+  }
+
+  .bottom-container {
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 767px) {
+  .social-section {
+    padding: 50px 15px 30px;
+  }
+
+  .bottom-container {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-section {
+    padding: 40px 10px 25px;
+  }
+
+  .bottom-container {
+    gap: 8px;
+    font-size: 11px;
+  }
+}

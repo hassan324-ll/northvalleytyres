@@ -1,0 +1,278 @@
+
+.heading-wrapper {
+  padding: 35px 60 15px 60px;  /* shift left like screenshot */
+}
+
+.page-title {
+  font-size: 40px;
+  font-weight: 500;
+  color: black;
+  margin-bottom: 15px;
+  margin-top: 50px;
+  margin-left: 68px;
+}
+
+.title-line {
+  border: none;
+  border-top: 1px solid #d6d6d6;
+}
+/* first section */
+/* ==============================
+   SECTION WRAPPER
+================================= */
+
+.tyre-info-section {
+  /* background: #f2f2f2; */
+  padding: 30px 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ==============================
+   ROW LAYOUT
+================================= */
+
+.info-row {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto 50px auto;
+  display: flex;
+  align-items: flex-start;   /* TOP ALIGN TEXT WITH IMAGE */
+  gap: 60px;
+}
+
+/* Reverse second section */
+.reverse {
+  flex-direction: row-reverse;
+}
+
+/* ==============================
+   IMAGE BOX
+================================= */
+
+.image-box {
+  flex: 1;
+  border: 0px solid rgba(0, 159, 227, 0.3);
+  border-radius: 10px;
+  padding: 8px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0, 159, 227, 0.1);
+}
+
+.image-box img {
+  width: 100%;
+  height: 400px;              /* Match screenshot proportion */
+  object-fit: cover;
+  display: block;
+  border-radius: 15px;
+
+  /* Soft shadow like screenshot */
+  border: 0px solid rgba(0, 159, 227, 0.45);
+  box-shadow: 0 15px 30px rgba(0, 159, 227, 0.2);
+}
+
+/* ==============================
+   TEXT BOX
+================================= */
+
+.text-box {
+  flex: 1;
+  padding: 0;
+  margin: 0;
+  border: 0px solid rgba(0, 159, 227, 0.35);
+  border-radius: 8px;
+  padding: 22px;
+  box-shadow: 0 12px 28px rgba(0, 159, 227, 0.14);
+  background: #fff;
+}
+
+/* Remove ALL default heading spacing */
+.text-box h3 {
+  margin: 0 0 20px 0;         /* remove top margin */
+  font-size: 26px;
+  font-weight: 600;
+  color: black;
+}
+
+/* Paragraph styling */
+.text-box p {
+  font-size: 20px;
+  color: #1b1c1b;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+/* List styling */
+.text-box ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.text-box li {
+  font-size: 20px;
+  color: #1b1c1b;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 992px) {
+  .info-row {
+    gap: 40px;
+  }
+
+  .image-box img {
+    height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .info-row {
+    flex-direction: column;
+    margin-bottom: 60px;
+  }
+
+  .reverse {
+    flex-direction: column;
+  }
+
+  .image-box img {
+    height: 260px;
+  }
+
+}
+
+/* Tablet + Mobile only overrides (desktop unchanged) */
+@media (max-width: 1024px) {
+  .heading-wrapper {
+    padding: 26px 20px 10px;
+  }
+
+  .page-title {
+    margin-top: 24px;
+    margin-left: 0;
+    margin-bottom: 12px;
+    font-size: 30px;
+  }
+
+  .tyre-info-section {
+    padding: 24px 0;
+  }
+
+  .info-row {
+    width: 97%;
+    gap: 28px;
+    margin-bottom: 36px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-box {
+    flex: 1;
+    width: 100%;
+  }
+
+  .text-box {
+    flex: 1;
+    width: 100%;
+    text-align: center;
+  }
+
+  .image-box img {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    height: 300px;
+  }
+
+  .text-box ul {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+  }
+
+  .text-box h3 {
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+
+  .text-box p,
+  .text-box li {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading-wrapper {
+    padding: 18px 14px 8px;
+  }
+
+  .page-title {
+    font-size: 25px;
+    margin-top: 14px;
+  }
+
+  .info-row {
+    width: 97%;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 32px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .reverse {
+    flex-direction: column;
+  }
+
+  .image-box img {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    height: 240px;
+  }
+
+  .text-box {
+    text-align: center;
+  }
+
+  .text-box ul {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+  }
+
+  .text-box h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .text-box p,
+  .text-box li {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 22px;
+  }
+
+  .image-box img {
+    height: 200px;
+  }
+
+  .text-box h3 {
+    font-size: 20px;
+  }
+
+  .text-box p,
+  .text-box li {
+    font-size: 15px;
+  }
+}

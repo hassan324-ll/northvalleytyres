@@ -1,0 +1,338 @@
+:host {
+  display: block;
+}
+
+/* ===============================
+   RESET
+================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 95%;
+  margin: auto;
+}
+
+/* ===============================
+   TOP HEADER
+================================= */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+
+.logo img {
+  height: 75px;
+  cursor: pointer;
+}
+
+.contact {
+  text-align: right;
+}
+
+.contact-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: black;
+  letter-spacing: 1px;
+}
+
+.contact-number {
+  display: block;
+  font-size: 34px;
+  font-weight: bold;
+  color: black;
+  margin-top: 5px;
+}
+
+/* ===============================
+   NAVBAR
+================================= */
+.navbar {
+  background: #009fe3;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  gap: 16px;
+}
+
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 5px auto;
+  background: #fff;
+}
+
+/* ===============================
+   NAV LINKS
+================================= */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-links li {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  opacity: 0.8;
+}
+
+.nav-with-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-arrow {
+  font-size: 10px;
+  line-height: 1;
+}
+
+/* ===============================
+   DROPDOWN MENU
+================================= */
+.dropdown-menu,
+.dropdown-sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #009fe3;
+  min-width: 220px;
+  display: none;
+  list-style: none;
+  padding: 10px 0px;
+  z-index: 999;
+}
+
+.dropdown-menu li,
+.dropdown-sub-menu li {
+  padding: 12px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dropdown-menu li:last-child,
+.dropdown-sub-menu li:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu li a,
+.dropdown-sub-menu li a {
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu li:hover,
+.dropdown-sub-menu li:hover {
+  background: #1f83ad;
+}
+
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+/* ===============================
+   SUB DROPDOWN (Events)
+================================= */
+.dropdown-sub {
+  position: relative;
+}
+
+.dropdown-sub-menu {
+  top: 0;
+  left: 100%;
+}
+
+.dropdown-sub:hover > .dropdown-sub-menu {
+  display: block;
+}
+
+/* ===============================
+   SCHEDULE BUTTON
+================================= */
+.schedule-btn {
+  background: black;
+  color: white;
+  border: 2px solid #00c4ff;
+  padding: 15px 22px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 25px;
+  white-space: nowrap;
+}
+
+.schedule-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   DESKTOP STICKY NAV (SCROLL UP)
+================================= */
+@media (min-width: 1101px) {
+  .top-header.desktop-nav-sticky {
+    padding-top: 70px;
+  }
+
+  .top-header.desktop-nav-sticky .top-bar {
+    display: none;
+  }
+
+  .top-header.desktop-nav-sticky .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+}
+
+/* ===============================
+   TABLET + MOBILE ONLY
+================================= */
+@media (max-width: 1100px) {
+  .top-header {
+    background: #009fe3;
+  }
+
+  .top-bar {
+    width: 100%;
+    padding: 14px 16px;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .logo img {
+    height: 60px;
+    display: block;
+    margin-top: 6px;
+  }
+
+  .contact {
+    display: none;
+  }
+
+  .nav-container {
+    height: auto;
+    min-height: 0;
+    padding: 8px 0 10px;
+  }
+
+  .menu-toggle {
+    display: inline-block;
+    background: #009fe3;
+    margin-left: 12px;
+  }
+
+  .schedule-btn {
+    display: none;
+  }
+
+  .nav-links {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    height: auto;
+    padding-top: 8px;
+  }
+
+  .nav-links.mobile-open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    height: auto;
+    padding: 9px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .nav-links li:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .dropdown,
+  .dropdown-sub {
+    width: 100%;
+    display: block;
+  }
+
+  .dropdown-menu,
+  .dropdown-sub-menu {
+    position: static;
+    display: block;
+    min-width: 100%;
+    margin-top: 6px;
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  .dropdown-menu li,
+  .dropdown-sub-menu li {
+    padding: 10px 12px;
+    border-bottom: 0;
+  }
+
+  .dropdown-menu li + li,
+  .dropdown-sub-menu li + li {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .dropdown-sub-menu {
+    margin-top: 6px;
+  }
+}
+
+@media (max-width: 560px) {
+  .navbar .container {
+    width: 92%;
+  }
+
+  .top-bar {
+    gap: 0;
+    padding: 12px 14px;
+  }
+}
