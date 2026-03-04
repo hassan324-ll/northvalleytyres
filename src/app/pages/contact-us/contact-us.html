@@ -108,17 +108,26 @@
         <h2>Contact us</h2>
       </div>
 
-      <form>
+      <form (ngSubmit)="sendEmail()" novalidate>
 
         <div class="form-row">
           <div class="form-field">
             <i class="fas fa-user field-icon" aria-hidden="true"></i>
-            <input type="text" placeholder="Your name">
+            <input
+              type="text"
+              name="user_name"
+              [(ngModel)]="formData.user_name"
+              placeholder="Your name"
+              required>
           </div>
           <div class="form-field">
             <i class="fas fa-tools field-icon" aria-hidden="true"></i>
-            <select>
-              <option>Type of service</option>
+            <select
+              name="service_type"
+              [(ngModel)]="formData.service_type"
+              required>
+              <option value="" disabled>Type of service</option>
+              <option *ngFor="let service of serviceOptions" [value]="service">{{ service }}</option>
             </select>
           </div>
         </div>
@@ -126,12 +135,21 @@
         <div class="form-row">
           <div class="form-field">
             <i class="fas fa-map-marker-alt field-icon" aria-hidden="true"></i>
-            <input type="text" placeholder="Address">
+            <input
+              type="text"
+              name="address"
+              [(ngModel)]="formData.address"
+              placeholder="Address"
+              required>
           </div>
           <div class="form-field">
             <i class="fas fa-location-arrow field-icon" aria-hidden="true"></i>
-            <select>
-              <option>Location</option>
+            <select
+              name="location"
+              [(ngModel)]="formData.location"
+              required>
+              <option value="" disabled>Location</option>
+              <option *ngFor="let location of locationOptions" [value]="location">{{ location }}</option>
             </select>
           </div>
         </div>
@@ -139,22 +157,43 @@
         <div class="form-row">
           <div class="form-field">
             <i class="fas fa-city field-icon" aria-hidden="true"></i>
-            <input type="text" placeholder="Your city">
+            <input
+              type="text"
+              name="city"
+              [(ngModel)]="formData.city"
+              placeholder="Your city"
+              required>
           </div>
           <div class="form-field">
             <i class="fas fa-shield-alt field-icon" aria-hidden="true"></i>
-            <input type="text" placeholder="Warranty">
+            <input
+              type="text"
+              name="warranty"
+              [(ngModel)]="formData.warranty"
+              placeholder="Warranty"
+              required>
           </div>
         </div>
 
         <div class="form-field textarea-field">
           <i class="fas fa-comment-dots field-icon" aria-hidden="true"></i>
-          <textarea placeholder="Service description"></textarea>
+          <textarea
+            name="description"
+            [(ngModel)]="formData.description"
+            placeholder="Service description"
+            required></textarea>
         </div>
 
-        <button type="submit" class="submit-btn">
+        <button type="submit" class="submit-btn" [disabled]="isSubmitting">
           SCHEDULE NOW
         </button>
+
+        <p
+          *ngIf="submitMessage"
+          class="form-status-message"
+          [class.error]="submitStatus === 'error'">
+          {{ submitMessage }}
+        </p>
 
       </form>
 

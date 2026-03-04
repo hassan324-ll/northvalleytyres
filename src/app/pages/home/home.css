@@ -486,6 +486,143 @@ border-radius: 15px;
   max-width: 220px;
 }
 
+.lookup-error {
+  margin: 10px 0 0;
+  color: #9b1c1c;
+  font-weight: 600;
+}
+
+.tyre-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 35, 0.62);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  padding: 20px;
+}
+
+.tyre-popup-card {
+  width: min(1040px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px;
+  position: relative;
+  border-top: 5px solid #1e98c7;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+}
+
+.tyre-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #e9f3f8;
+  color: #114f86;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tyre-popup-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+}
+
+.tyre-popup-left,
+.tyre-popup-right {
+  background: #f6f9fc;
+  border: 1px solid #dce6f3;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.tyre-popup-left h3,
+.tyre-popup-right h3 {
+  margin: 0 0 10px;
+  color: #0f2a44;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.tyre-popup-left p {
+  margin: 0 0 14px;
+  color: #374b60;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.tyre-popup-left h4 {
+  margin: 18px 0 10px;
+  color: #0f2a44;
+  font-size: 20px;
+}
+
+.tyre-option-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 2px solid #4f73c5;
+  padding: 8px 0;
+  margin-bottom: 6px;
+  gap: 12px;
+}
+
+.tyre-option-row span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #273447;
+}
+
+.tyre-option-row button {
+  background: #1e98c7;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tyre-option-row button:hover {
+  background: #114f86;
+}
+
+.tyre-popup-right {
+  padding-top: 16px;
+}
+
+.vehicle-details-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid #e4e9f1;
+  font-size: 15px;
+}
+
+.vehicle-details-row span {
+  color: #243447;
+  font-weight: 500;
+}
+
+.vehicle-details-row strong {
+  color: #111a23;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .booking-card {
@@ -495,6 +632,38 @@ border-radius: 15px;
 
   .vertical-divider {
     display: none;
+  }
+
+  .tyre-popup-card {
+    max-height: calc(100vh - 24px);
+    padding: 14px 12px;
+  }
+
+  .tyre-popup-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .tyre-popup-left h3,
+  .tyre-popup-right h3 {
+    font-size: 20px;
+  }
+
+  .tyre-popup-left h4 {
+    font-size: 17px;
+  }
+
+  .tyre-option-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tyre-option-row span {
+    font-size: 16px;
+  }
+
+  .vehicle-details-row {
+    font-size: 14px;
   }
 }
 
@@ -1169,6 +1338,27 @@ button:hover {
   color: #3bb54a;
   background: #f5fff7;
   font-size: 14px;
+}
+
+.home-contact-submit:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.home-form-status-message {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #116530;
+  background: #eaf9f0;
+  border: 1px solid #bce6cb;
+}
+
+.home-form-status-message.error {
+  color: #9b1c1c;
+  background: #fdecec;
+  border-color: #f3b6b6;
 }
 
 /* ================= RIGHT SIDE ================= */

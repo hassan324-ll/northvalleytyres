@@ -310,6 +310,27 @@ textarea {
   background: #1b4e8c;
 }
 
+.submit-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.form-status-message {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #116530;
+  background: #eaf9f0;
+  border: 1px solid #bce6cb;
+}
+
+.form-status-message.error {
+  color: #9b1c1c;
+  background: #fdecec;
+  border-color: #f3b6b6;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .contact-wrapper {

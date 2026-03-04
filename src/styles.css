@@ -14,3 +14,7 @@
 body.lightbox-open app-header {
   visibility: hidden;
 }
+
+body.tyre-popup-open {
+  overflow: hidden;
+}

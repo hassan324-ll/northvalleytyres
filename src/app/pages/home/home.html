@@ -159,16 +159,72 @@
 
         <div class="reg-box">
           <span class="uk">UK</span>
-          <input type="text" placeholder="YOUR REG" />
+          <input
+            type="text"
+            placeholder="YOUR REG"
+            [(ngModel)]="registrationNumber"
+            (keyup.enter)="searchByRegistration()" />
         </div>
 
-        <button class="search-btn">SEARCH</button>
+        <button class="search-btn" (click)="searchByRegistration()" [disabled]="tyreLookupLoading">
+          {{ tyreLookupLoading ? 'Searching...' : 'SEARCH' }}
+        </button>
+
+        <p class="lookup-error" *ngIf="tyreLookupError">{{ tyreLookupError }}</p>
 
         <img src="tyredetailsimg.png" alt="Wheel" class="wheel-img" />
       </div>
     </div>
   </div>
 </section>
+
+<div class="tyre-popup-overlay" *ngIf="lookupResult" (click)="closeLookupPopup()">
+  <div class="tyre-popup-card" (click)="$event.stopPropagation()">
+    <button class="tyre-popup-close" (click)="closeLookupPopup()" aria-label="Close popup">&times;</button>
+
+    <div class="tyre-popup-grid">
+      <div class="tyre-popup-left">
+        <h3>Choose your tyre size</h3>
+        <p>
+          We have found multiple tyre options for your vehicle. Please double check your tyre size
+          before booking.
+        </p>
+
+        <h4>Front Tyres</h4>
+        <div class="tyre-option-row" *ngFor="let tyre of lookupResult.frontTyres">
+          <span>{{ tyre }}</span>
+          <button type="button" (click)="bookTyre(tyre)">Book tyre</button>
+        </div>
+
+        <h4>Rear Tyres</h4>
+        <div class="tyre-option-row" *ngFor="let tyre of lookupResult.rearTyres">
+          <span>{{ tyre }}</span>
+          <button type="button" (click)="bookTyre(tyre)">Book tyre</button>
+        </div>
+      </div>
+
+      <div class="tyre-popup-right">
+        <h3>Your Vehicle Details</h3>
+        <div class="vehicle-details-row">
+          <span>Registration:</span>
+          <strong>{{ lookupResult.registration }}</strong>
+        </div>
+        <div class="vehicle-details-row">
+          <span>Make:</span>
+          <strong>{{ lookupResult.make }}</strong>
+        </div>
+        <div class="vehicle-details-row">
+          <span>Model:</span>
+          <strong>{{ lookupResult.model }}</strong>
+        </div>
+        <div class="vehicle-details-row">
+          <span>Colour:</span>
+          <strong>{{ lookupResult.colour }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- 4th section -->
 <section class="scanner-section">
@@ -359,32 +415,71 @@
         <span>CONTACT US</span>
       </div>
 
-      <form>
+      <form (ngSubmit)="sendEmail()" novalidate>
         <div class="form-row">
-          <input type="text" placeholder="Your name" />
-          <select>
-            <option>Type of service</option>
+          <input
+            type="text"
+            name="user_name"
+            [(ngModel)]="formData.user_name"
+            placeholder="Your name"
+            required />
+          <select
+            name="service_type"
+            [(ngModel)]="formData.service_type"
+            required>
+            <option value="" disabled>Type of service</option>
+            <option *ngFor="let service of serviceOptions" [value]="service">{{ service }}</option>
           </select>
         </div>
 
         <div class="form-row">
-          <input type="text" placeholder="Address" />
-          <select>
-            <option>Location</option>
+          <input
+            type="text"
+            name="address"
+            [(ngModel)]="formData.address"
+            placeholder="Address"
+            required />
+          <select
+            name="location"
+            [(ngModel)]="formData.location"
+            required>
+            <option value="" disabled>Location</option>
+            <option *ngFor="let location of locationOptions" [value]="location">{{ location }}</option>
           </select>
         </div>
 
         <div class="form-row">
-          <input type="text" placeholder="Your city" />
-          <input type="text" placeholder="Warranty" />
+          <input
+            type="text"
+            name="city"
+            [(ngModel)]="formData.city"
+            placeholder="Your city"
+            required />
+          <input
+            type="text"
+            name="warranty"
+            [(ngModel)]="formData.warranty"
+            placeholder="Warranty"
+            required />
         </div>
 
-        <textarea placeholder="Service description"></textarea>
+        <textarea
+          name="description"
+          [(ngModel)]="formData.description"
+          placeholder="Service description"
+          required></textarea>
 
         <div class="form-footer">
           <span>All fields are obligatory</span>
-          <button type="submit">SCHEDULE NOW</button>
+          <button type="submit" class="home-contact-submit" [disabled]="isSubmitting">SCHEDULE NOW</button>
         </div>
+
+        <p
+          *ngIf="submitMessage"
+          class="home-form-status-message"
+          [class.error]="submitStatus === 'error'">
+          {{ submitMessage }}
+        </p>
 
         <!-- <div class="success-message">
           Thank you for your message. It has been sent.
