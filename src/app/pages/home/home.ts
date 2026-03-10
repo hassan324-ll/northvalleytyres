@@ -5,7 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import emailjs from '@emailjs/browser';
 import { LocationDetails } from "../../components/location-details/location-details";
 import { FeatureCarousel } from "../../components/feature-carousel/feature-carousel";
-import { Tyre, TyreLookupApiResponse } from '../../services/tyre';
+import { Tyre, TyreLookupApiResponse, TyreSizeSearchParams } from '../../services/tyre';
 import { finalize } from 'rxjs/operators';
 
 interface VehicleLookupResult {
@@ -15,6 +15,13 @@ interface VehicleLookupResult {
   colour: string;
   frontTyres: string[];
   rearTyres: string[];
+}
+
+interface TyreSizeFilter {
+  width: string;
+  profile: string;
+  rim: string;
+  speed: string;
 }
 
 @Component({
@@ -59,6 +66,18 @@ export class Home implements OnDestroy {
   tyreLookupLoading = false;
   tyreLookupError = '';
   lookupResult: VehicleLookupResult | null = null;
+  tyreSizeLookupLoading = false;
+  tyreSizeLookupError = '';
+  tyreSizeFilter: TyreSizeFilter = {
+    width: '205',
+    profile: '55',
+    rim: '16',
+    speed: 'Any',
+  };
+  readonly tyreWidthOptions = ['195', '205', '215', '225', '235', '245', '255'];
+  readonly tyreProfileOptions = ['45', '50', '55', '60', '65'];
+  readonly tyreRimOptions = ['15', '16', '17', '18', '19', '20'];
+  readonly tyreSpeedOptions = ['Any', 'H', 'V', 'W', 'Y', 'T', 'S', 'R'];
 
   images = [
     { src: '/homegallery1.jpg', title: 'Best Service' },
@@ -161,6 +180,7 @@ export class Home implements OnDestroy {
     this.tyreLookupError = '';
     this.lookupResult = null;
     this.document.body.classList.remove('tyre-popup-open');
+    this.tyreSizeLookupError = '';
 
     this.tyreService
       .searchByRegistration(registration)
@@ -183,6 +203,56 @@ export class Home implements OnDestroy {
       });
   }
 
+  searchByTyreSize() {
+    const { width, profile, rim, speed } = this.tyreSizeFilter;
+    if (!width || !profile || !rim) {
+      this.tyreSizeLookupError = 'Please select width, profile, and rim size.';
+      return;
+    }
+
+    const params: TyreSizeSearchParams = {
+      width,
+      profile,
+      rim,
+    };
+
+    if (speed && speed !== 'Any') {
+      params.speedRating = speed;
+    }
+
+    this.tyreSizeLookupLoading = true;
+    this.tyreSizeLookupError = '';
+    this.tyreLookupError = '';
+    this.lookupResult = null;
+    this.document.body.classList.remove('tyre-popup-open');
+
+    this.tyreService
+      .searchByTyreSize(params)
+      .pipe(finalize(() => (this.tyreSizeLookupLoading = false)))
+      .subscribe({
+        next: (response) => {
+          const sizeLabel = this.buildTyreSizeLabel(this.tyreSizeFilter);
+          const mapped = this.mapLookupResponse(response, sizeLabel, {
+            make: 'Custom size search',
+            model: sizeLabel,
+            colour: 'N/A',
+          });
+
+          if (!mapped) {
+            this.tyreSizeLookupError = 'No tyre data found for that size.';
+            return;
+          }
+
+          this.lookupResult = mapped;
+          this.document.body.classList.add('tyre-popup-open');
+        },
+        error: () => {
+          this.tyreSizeLookupError = 'Unable to fetch tyre data right now. Please try again.';
+          this.document.body.classList.remove('tyre-popup-open');
+        },
+      });
+  }
+
   closeLookupPopup() {
     this.lookupResult = null;
     this.document.body.classList.remove('tyre-popup-open');
@@ -197,14 +267,20 @@ export class Home implements OnDestroy {
     });
   }
 
+  private buildTyreSizeLabel(filter: TyreSizeFilter): string {
+    const base = `${filter.width}/${filter.profile}R${filter.rim}`;
+    return filter.speed && filter.speed !== 'Any' ? `${base} ${filter.speed}` : base;
+  }
+
   private mapLookupResponse(
     response: TyreLookupApiResponse,
-    registration: string
+    registration: string,
+    fallbackVehicle?: Partial<Pick<VehicleLookupResult, 'make' | 'model' | 'colour'>>
   ): VehicleLookupResult | null {
     const dataItems = response?.Response?.DataItems;
     const records = dataItems?.TyreDetails?.RecordList ?? [];
 
-    if (!dataItems?.VehicleDetails || !records.length) {
+    if (!records.length) {
       return null;
     }
 
@@ -216,11 +292,16 @@ export class Home implements OnDestroy {
       .map((record) => this.formatTyre(record?.Rear?.Tyre?.Size, record?.Rear?.Tyre?.SpeedIndex))
       .filter((value): value is string => Boolean(value));
 
+    const vehicleDetails = dataItems?.VehicleDetails;
+    const make = vehicleDetails?.Make ?? fallbackVehicle?.make ?? '-';
+    const model = vehicleDetails?.Model ?? fallbackVehicle?.model ?? '-';
+    const colour = fallbackVehicle?.colour ?? 'WHITE';
+
     return {
       registration,
-      make: dataItems.VehicleDetails.Make ?? '-',
-      model: dataItems.VehicleDetails.Model ?? '-',
-      colour: 'WHITE',
+      make,
+      model,
+      colour,
       frontTyres: this.unique(frontTyres),
       rearTyres: this.unique(rearTyres),
     };

@@ -32,6 +32,13 @@ export interface TyreLookupApiResponse {
   };
 }
 
+export interface TyreSizeSearchParams {
+  width: string;
+  profile: string;
+  rim: string;
+  speedRating?: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -44,6 +51,22 @@ export class Tyre {
   searchByRegistration(registration: string): Observable<TyreLookupApiResponse> {
     const formattedRegistration = registration.trim().toUpperCase().replace(/\s+/g, '');
     const url = `${this.apiBaseUrl}&key_vrm=${encodeURIComponent(formattedRegistration)}`;
+    return this.http.get<TyreLookupApiResponse>(url);
+  }
+
+  searchByTyreSize(params: TyreSizeSearchParams): Observable<TyreLookupApiResponse> {
+    const query = [
+      `key_tyre_width=${encodeURIComponent(params.width.trim())}`,
+      `key_tyre_profile=${encodeURIComponent(params.profile.trim())}`,
+      `key_tyre_rim=${encodeURIComponent(params.rim.trim())}`,
+    ];
+
+    const speed = params.speedRating?.trim();
+    if (speed) {
+      query.push(`key_tyre_speed=${encodeURIComponent(speed)}`);
+    }
+
+    const url = `${this.apiBaseUrl}&${query.join('&')}`;
     return this.http.get<TyreLookupApiResponse>(url);
   }
 }

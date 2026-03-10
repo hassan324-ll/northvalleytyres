@@ -120,34 +120,52 @@
       <!-- LEFT FORM -->
       <div class="form-left">
         <div class="form-group">
-          <label>Width:</label>
-          <select>
-            <option>205</option>
+          <label for="tyre-width">Width:</label>
+          <select
+            id="tyre-width"
+            name="tyreWidth"
+            [(ngModel)]="tyreSizeFilter.width">
+            <option *ngFor="let option of tyreWidthOptions" [value]="option">{{ option }}</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label>Profile:</label>
-          <select>
-            <option>55</option>
+          <label for="tyre-profile">Profile:</label>
+          <select
+            id="tyre-profile"
+            name="tyreProfile"
+            [(ngModel)]="tyreSizeFilter.profile">
+            <option *ngFor="let option of tyreProfileOptions" [value]="option">{{ option }}</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label>Rim size:</label>
-          <select>
-            <option>16</option>
+          <label for="tyre-rim">Rim size:</label>
+          <select
+            id="tyre-rim"
+            name="tyreRim"
+            [(ngModel)]="tyreSizeFilter.rim">
+            <option *ngFor="let option of tyreRimOptions" [value]="option">{{ option }}</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label>Speed:</label>
-          <select>
-            <option>Any</option>
+          <label for="tyre-speed">Speed:</label>
+          <select
+            id="tyre-speed"
+            name="tyreSpeed"
+            [(ngModel)]="tyreSizeFilter.speed">
+            <option *ngFor="let option of tyreSpeedOptions" [value]="option">{{ option }}</option>
           </select>
         </div>
 
-        <button class="search-btn">SEARCH</button>
+        <button
+          class="search-btn"
+          (click)="searchByTyreSize()"
+          [disabled]="tyreSizeLookupLoading">
+          {{ tyreSizeLookupLoading ? 'Searching...' : 'SEARCH' }}
+        </button>
+        <p class="lookup-error" *ngIf="tyreSizeLookupError">{{ tyreSizeLookupError }}</p>
       </div>
 
       <!-- BLACK DIVIDER -->
