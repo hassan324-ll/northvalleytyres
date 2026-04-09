@@ -3,9 +3,10 @@ import { LocationDetails } from "../../components/location-details/location-deta
 
 @Component({
   selector: 'app-mobile-fitting',
+  standalone: true,
   imports: [LocationDetails],
   templateUrl: './mobile-fitting.html',
-  styleUrl: './mobile-fitting.css',
+  styleUrls: ["./mobile-fitting.css"],
 })
 export class MobileFitting {
 

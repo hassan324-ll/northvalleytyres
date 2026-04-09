@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-valeting-gallery',
+  standalone: true,
   imports: [LocationDetails, CommonModule],
   templateUrl: './valeting-gallery.html',
-  styleUrl: './valeting-gallery.css',
+  styleUrls: ["./valeting-gallery.css"],
 })
 export class ValetingGallery {
 images: string[] = [

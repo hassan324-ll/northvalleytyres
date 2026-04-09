@@ -3,9 +3,10 @@ import { LocationDetails } from "../../components/location-details/location-deta
 
 @Component({
   selector: 'app-new-tyre',
+  standalone: true,
   imports: [LocationDetails, ],
   templateUrl: './new-tyre.html',
-  styleUrl: './new-tyre.css',
+  styleUrls: ["./new-tyre.css"],
 })
 export class NewTyre {
 

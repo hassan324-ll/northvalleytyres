@@ -3,9 +3,10 @@ import { LocationDetails } from '../../components/location-details/location-deta
 
 @Component({
   selector: 'app-price-match',
+  standalone: true,
   imports: [LocationDetails],
   templateUrl: './price-match.html',
-  styleUrl: './price-match.css',
+  styleUrls: ["./price-match.css"],
 })
 export class PriceMatch {
 

@@ -3,9 +3,10 @@ import { LocationDetails } from "../../components/location-details/location-deta
 
 @Component({
   selector: 'app-whee-aligment-balancing',
+  standalone: true,
   imports: [LocationDetails, ],
   templateUrl: './whee-aligment-balancing.html',
-  styleUrl: './whee-aligment-balancing.css',
+  styleUrls: ["./whee-aligment-balancing.css"],
 })
 export class WheeAligmentBalancing {
 

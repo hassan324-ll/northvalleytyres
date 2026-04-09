@@ -1,4 +1,5 @@
-import { Component, HostListener } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -12,7 +13,7 @@ export class Header {
   isMobileMenuOpen = false;
   isDesktopNavSticky = false;
 
-  private lastScrollY = 0;
+  constructor(@Inject(PLATFORM_ID) private readonly platformId: object) {}
 
   toggleMobileMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
@@ -22,16 +23,17 @@ export class Header {
     this.isMobileMenuOpen = false;
   }
 
- @HostListener('window:scroll', [])
-  onWindowScroll() {
-
-    // Apply only on desktop
-    if (window.innerWidth > 1100) {
-      this.isDesktopNavSticky = window.scrollY > 50;
-    } else {
-      this.isDesktopNavSticky = false;
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
     }
 
-  }
+    if (window.innerWidth > 1100) {
+      this.isDesktopNavSticky = window.scrollY > 50;
+      return;
+    }
 
+    this.isDesktopNavSticky = false;
+  }
 }

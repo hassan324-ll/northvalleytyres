@@ -6,7 +6,7 @@ import { LocationDetails } from "../../components/location-details/location-deta
   standalone: true,
   imports: [LocationDetails],
   templateUrl: './adas.html',
-  styleUrl: './adas.css',
+  styleUrls: ["./adas.css"],
 })
 export class Adas {
 

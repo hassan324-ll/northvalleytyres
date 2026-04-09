@@ -1,11 +1,13 @@
-import { CommonModule, DOCUMENT } from '@angular/common';
-import { Component, Inject, OnDestroy } from '@angular/core';
+import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnDestroy, PLATFORM_ID, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import emailjs from '@emailjs/browser';
 import { LocationDetails } from "../../components/location-details/location-details";
 import { FeatureCarousel } from "../../components/feature-carousel/feature-carousel";
 import { Tyre, TyreLookupApiResponse, TyreSizeSearchParams } from '../../services/tyre';
+import { MetaService } from '../../services/meta.service';
+import { SchemaService } from '../../services/schema.service';
 import { finalize } from 'rxjs/operators';
 
 interface VehicleLookupResult {
@@ -26,16 +28,35 @@ interface TyreSizeFilter {
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   imports: [RouterLink, CommonModule, FormsModule, LocationDetails, FeatureCarousel],
   templateUrl: './home.html',
-  styleUrl: './home.css',
+  styleUrls: ['./home.css'],
 })
-export class Home implements OnDestroy {
+export class Home implements OnInit, OnDestroy {
   constructor(
     @Inject(DOCUMENT) private readonly document: Document,
+    @Inject(PLATFORM_ID) private readonly platformId: object,
     private readonly tyreService: Tyre,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly metaService: MetaService,
+    private readonly schemaService: SchemaService
   ) {}
+
+  ngOnInit(): void {
+    this.metaService.setHomepageMeta();
+    
+    // Add schema data for homepage
+    this.schemaService.addSchema(this.schemaService.getOrganizationSchema());
+    this.schemaService.addSchema(this.schemaService.getLocalBusinessSchema());
+    
+    // Add breadcrumb for homepage
+    this.schemaService.addSchema(
+      this.schemaService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' }
+      ])
+    );
+  }
 
   private readonly businessStartYear = 1998;
   readonly yearsOfExperience = Math.max(new Date().getFullYear() - this.businessStartYear, 0);
@@ -106,12 +127,12 @@ export class Home implements OnDestroy {
 
   openImage(index: number) {
     this.selectedImageIndex = index;
-    this.document.body.classList.add('lightbox-open');
+    this.toggleBodyClass('lightbox-open', true);
   }
 
   closeImage() {
     this.selectedImageIndex = null;
-    this.document.body.classList.remove('lightbox-open');
+    this.toggleBodyClass('lightbox-open', false);
   }
 
   prevImage() {
@@ -130,11 +151,15 @@ export class Home implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.document.body.classList.remove('lightbox-open');
-    this.document.body.classList.remove('tyre-popup-open');
+    this.toggleBodyClass('lightbox-open', false);
+    this.toggleBodyClass('tyre-popup-open', false);
   }
 
   sendEmail() {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     const hasEmptyField = Object.values(this.formData).some(
       (value) => !value || !value.trim()
     );
@@ -179,7 +204,7 @@ export class Home implements OnDestroy {
     this.tyreLookupLoading = true;
     this.tyreLookupError = '';
     this.lookupResult = null;
-    this.document.body.classList.remove('tyre-popup-open');
+    this.toggleBodyClass('tyre-popup-open', false);
     this.tyreSizeLookupError = '';
 
     this.tyreService
@@ -194,11 +219,11 @@ export class Home implements OnDestroy {
           }
 
           this.lookupResult = mapped;
-          this.document.body.classList.add('tyre-popup-open');
+          this.toggleBodyClass('tyre-popup-open', true);
         },
         error: () => {
           this.tyreLookupError = 'Unable to fetch vehicle data right now. Please try again.';
-          this.document.body.classList.remove('tyre-popup-open');
+          this.toggleBodyClass('tyre-popup-open', false);
         },
       });
   }
@@ -224,7 +249,7 @@ export class Home implements OnDestroy {
     this.tyreSizeLookupError = '';
     this.tyreLookupError = '';
     this.lookupResult = null;
-    this.document.body.classList.remove('tyre-popup-open');
+    this.toggleBodyClass('tyre-popup-open', false);
 
     this.tyreService
       .searchByTyreSize(params)
@@ -244,18 +269,18 @@ export class Home implements OnDestroy {
           }
 
           this.lookupResult = mapped;
-          this.document.body.classList.add('tyre-popup-open');
+          this.toggleBodyClass('tyre-popup-open', true);
         },
         error: () => {
           this.tyreSizeLookupError = 'Unable to fetch tyre data right now. Please try again.';
-          this.document.body.classList.remove('tyre-popup-open');
+          this.toggleBodyClass('tyre-popup-open', false);
         },
       });
   }
 
   closeLookupPopup() {
     this.lookupResult = null;
-    this.document.body.classList.remove('tyre-popup-open');
+    this.toggleBodyClass('tyre-popup-open', false);
   }
 
   bookTyre(tyreSize: string) {
@@ -319,5 +344,12 @@ export class Home implements OnDestroy {
   private unique(values: string[]): string[] {
     return [...new Set(values)];
   }
-}
 
+  private toggleBodyClass(className: string, enabled: boolean): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    this.document.body.classList.toggle(className, enabled);
+  }
+}

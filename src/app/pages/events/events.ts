@@ -3,9 +3,10 @@ import { LocationDetails } from "../../components/location-details/location-deta
 
 @Component({
   selector: 'app-events',
+  standalone: true,
   imports: [LocationDetails],
   templateUrl: './events.html',
-  styleUrl: './events.css',
+  styleUrls: ["./events.css"],
 })
 export class Events {
 

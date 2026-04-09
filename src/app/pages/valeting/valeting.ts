@@ -6,7 +6,7 @@ import { LocationDetails } from "../../components/location-details/location-deta
   standalone: true,
   imports: [LocationDetails],
   templateUrl: './valeting.html',
-  styleUrl: './valeting.css',
+  styleUrls: ["./valeting.css"],
 })
 export class Valeting {
 

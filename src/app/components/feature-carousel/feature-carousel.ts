@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
 
 type CarouselFeature = {
   id: string;
@@ -48,6 +48,8 @@ export class FeatureCarousel implements OnInit, OnDestroy {
   ];
   displaySlides: CarouselFeature[] = [];
 
+  constructor(@Inject(PLATFORM_ID) private readonly platformId: object) {}
+
   getSlideBackground(imagePath: string): string {
     return `linear-gradient(rgba(7, 12, 18, 0.62), rgba(7, 12, 18, 0.62)), url('${imagePath}')`;
   }
@@ -55,7 +57,10 @@ export class FeatureCarousel implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.displaySlides = [...this.features, this.features[0]];
     this.progressValues = this.features.map(() => 0);
-    this.startProgress();
+
+    if (isPlatformBrowser(this.platformId)) {
+      this.startProgress();
+    }
   }
 
   ngOnDestroy(): void {
@@ -70,6 +75,10 @@ export class FeatureCarousel implements OnInit, OnDestroy {
   }
 
   onTrackTransitionEnd(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     if (this.trackIndex === this.features.length) {
       this.transitionEnabled = false;
       this.trackIndex = 0;
@@ -88,6 +97,10 @@ export class FeatureCarousel implements OnInit, OnDestroy {
   }
 
   private startProgress(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     this.clearProgressTimer();
 
     const duration = 3000;

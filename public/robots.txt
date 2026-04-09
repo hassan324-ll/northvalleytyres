@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /internal
+
+# Specific rules for crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay
+Crawl-delay: 0.5
+
+# Sitemap location
+Sitemap: https://northvalleytyres/sitemap.xml
+Sitemap: https://northvalleytyres.com/sitemap-images.xml
+
+# Host specification (helps prevent www vs non-www duplication)
+Host: https://northvalleytyres.com

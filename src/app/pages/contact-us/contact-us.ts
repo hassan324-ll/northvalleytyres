@@ -1,14 +1,29 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import emailjs from '@emailjs/browser';
+import { MetaService } from '../../services/meta.service';
+
 @Component({
   selector: 'app-contact-us',
+  standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './contact-us.html',
-  styleUrl: './contact-us.css',
+  styleUrls: ["./contact-us.css"],
 })
-export class ContactUs {
+export class ContactUs implements OnInit {
+  constructor(private metaService: MetaService) {}
+
+  ngOnInit(): void {
+    this.metaService.updateMetaTags({
+      title: 'Contact Us',
+      description: 'Get in touch with Colne Tyre Centre for tyres, wheel alignment, ADAS calibration, and car valeting services. Visit us or call today.',
+      keywords: 'contact, phone, location, tyre services, car care',
+      url: '/contact-us',
+      type: 'website'
+    });
+  }
+
   activeTab: string = 'call'; 
   isSubmitting = false;
   submitMessage = '';

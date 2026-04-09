@@ -4,9 +4,10 @@ import { LocationDetails } from '../../components/location-details/location-deta
 
 @Component({
   selector: 'app-tyres-gallery',
+  standalone: true,
   imports: [CommonModule, LocationDetails],
   templateUrl: './tyres-gallery.html',
-  styleUrl: './tyres-gallery.css',
+  styleUrls: ["./tyres-gallery.css"],
 })
 export class TyresGallery {
 images: string[] = [

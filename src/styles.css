@@ -2,7 +2,6 @@
 @import '@fortawesome/fontawesome-free/css/all.css';
 /* font */
 
-
 /* You can add global styles to this file, and also import other style files */
 *{
     margin: 0;
@@ -11,10 +10,87 @@
     font-family: sans-serif;
 }
 
+/* Performance optimization: Hardware acceleration for animations */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Prevent layout shifts from scrollbars */
+html {
+  overflow-y: scroll;
+}
+
 body.lightbox-open app-header {
   visibility: hidden;
 }
 
 body.tyre-popup-open {
   overflow: hidden;
+}
+
+/* Image optimization - prevent layout shift */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Picture element optimization */
+picture {
+  display: block;
+}
+
+/* Lazy loading images styling */
+img.lazy-image {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+
+img.lazy-image.loading {
+  opacity: 0.7;
+  filter: blur(8px);
+  background-color: #f0f0f0;
+}
+
+img.lazy-image.loaded {
+  opacity: 1;
+  animation: fadeInImage 0.3s ease-in;
+}
+
+@keyframes fadeInImage {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Font loading optimization */
+@font-face {
+  font-display: swap; /* Show fallback immediately, swap when web font loads */
+}
+
+/* Optimize critical rendering path */
+app-root {
+  display: block;
+}
+
+/* Reduce Cumulative Layout Shift (CLS) */
+button, a {
+  /* Ensure consistent clicking area */
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Performance: Use CSS containment where possible */
+.card, .section, .container {
+  contain: layout style paint;
+}
+
+/* Performance: Reduce repaints */
+body {
+  will-change: auto; /* Only set where needed */
 }

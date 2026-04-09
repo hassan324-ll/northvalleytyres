@@ -6,7 +6,7 @@ import { LocationDetails } from '../../components/location-details/location-deta
   standalone: true,
   imports: [LocationDetails],
   templateUrl: './full-car-valet.html',
-  styleUrl: './full-car-valet.css',
+  styleUrls: ["./full-car-valet.css"],
 })
 export class FullCarValet {
 
