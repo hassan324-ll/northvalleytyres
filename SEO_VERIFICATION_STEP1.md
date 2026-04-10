@@ -24,7 +24,7 @@
 
 **Testing on Different Routes:**
 - Navigate to `/` (home) → should show "Premium Tyres & Car Services" title
-- Navigate to `/about-us` → should show "About Us - Colne Tyre Centre" title
+- Navigate to `/about-us` → should show "About Us - North Valley Tyres" title
 - Navigate to `/contact-us` → should show "Contact Us" title
 - Check the browser title bar changes for each page
 

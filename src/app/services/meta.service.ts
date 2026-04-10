@@ -69,7 +69,7 @@ export class MetaService {
 
   updateMetaTags(metadata: PageMetadata): void {
     // Set page title
-    const fullTitle = `${metadata.title} | Colne Tyre Centre`;
+    const fullTitle = `${metadata.title} | North Valley Tyres`;
     this.titleService.setTitle(fullTitle);
 
     // Set standard meta tags
@@ -187,7 +187,7 @@ export class MetaService {
   setHomepageMeta(): void {
     this.updateMetaTags({
       title: 'Premium Tyres & Car Valeting Services',
-      description: 'Colne Tyre Centre offers premium tyres, wheel alignment, ADAS calibration, and professional car valeting services.',
+      description: 'North Valley Tyres offers premium tyres, wheel alignment, ADAS calibration, and professional car valeting services.',
       keywords: 'tyres, wheel alignment, car valeting, ADAS calibration, mobile fitting',
       image: '/sliderimg1.avif',
       url: '/',

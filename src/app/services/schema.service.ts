@@ -44,7 +44,7 @@ export class SchemaService {
       'name': 'North Valley Tyres',
       'url': this.baseUrl,
       'logo': `${this.baseUrl}/logo.png`,
-      'description': 'Premium tyres, wheel alignment, ADAS calibration, and professional car valeting services.',
+      'description': 'Affordable premium tyres, wheel alignment Lancashire, Car Wheel balancing, ADAS service near me, Mobile car detailing North Valley.',
       'sameAs': [
         'https://www.facebook.com/northvalleytyres',
         'https://www.instagram.com/northvalleytyres',
@@ -107,8 +107,8 @@ export class SchemaService {
         }
       ],
       'sameAs': [
-        'https://www.facebook.com/colonetyre',
-        'https://www.instagram.com/colnetyrecentre',
+        'https://www.facebook.com/northvalleytyres',
+        'https://www.instagram.com/northvalleytyres',
         'https://www.google.com/maps/place/your-business-id'
       ]
     };
@@ -136,7 +136,7 @@ export class SchemaService {
       'sku': sku,
       'brand': {
         '@type': 'Brand',
-        'name': 'Colne Tyre Centre'
+        'name': 'North Valley Tyres'
       },
       'offers': {
         '@type': 'Offer',
@@ -146,7 +146,7 @@ export class SchemaService {
         'availability': inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
         'seller': {
           '@type': 'Organization',
-          'name': 'Colne Tyre Centre'
+          'name': 'North Valley Tyres'
         }
       },
       'aggregateRating': {
@@ -194,7 +194,7 @@ export class SchemaService {
       'image': `${this.baseUrl}${image}`,
       'provider': {
         '@type': 'LocalBusiness',
-        'name': 'Colne Tyre Centre',
+        'name': 'North Valley Tyres',
         'url': this.baseUrl
       },
       'areaServed': areaServed,
@@ -231,7 +231,7 @@ export class SchemaService {
     image: string,
     datePublished: string,
     dateModified: string,
-    author: string = 'Colne Tyre Centre',
+    author: string = 'North Valley Tyres',
     articleBody: string = ''
   ): SchemaConfig {
     return {
@@ -249,7 +249,7 @@ export class SchemaService {
       },
       'publisher': {
         '@type': 'Organization',
-        'name': 'Colne Tyre Centre',
+        'name': 'North Valley Tyres',
         'logo': {
           '@type': 'ImageObject',
           'url': `${this.baseUrl}/logo.png`

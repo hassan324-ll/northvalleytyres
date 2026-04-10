@@ -17,8 +17,8 @@ export class ContactUs implements OnInit {
   ngOnInit(): void {
     this.metaService.updateMetaTags({
       title: 'Contact Us',
-      description: 'Get in touch with Colne Tyre Centre for tyres, wheel alignment, ADAS calibration, and car valeting services. Visit us or call today.',
-      keywords: 'contact, phone, location, tyre services, car care',
+      description: 'Get in touch with North Valley Tyres for tyres, wheel alignment, ADAS calibration, and car valeting services. Visit us or call today.',
+      keywords: 'contact, Tyre fitting phone number Lancashire, location, Contact tyre services Lancashire, Car service location Lancashire',
       url: '/contact-us',
       type: 'website'
     });

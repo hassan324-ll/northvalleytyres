@@ -15,8 +15,8 @@ export class Tyres implements OnInit {
   ngOnInit(): void {
     this.metaService.updateMetaTags({
       title: 'New Tyres',
-      description: 'Browse our selection of premium new tyres for all vehicle types. Fast fitting service available at Colne Tyre Centre.',
-      keywords: 'tyres, new tyres, tyre fitting, vehicle tyres, car tyres',
+      description: 'Browse our selection of premium new tyres for all vehicle types. Fast fitting service available at North Valley Tyres.',
+      keywords: 'Tyres near me, Car tyre replacement, Vehicle tyres Lancashire, Emergency tyre fitting, Wheel alignment service, Tyre shop Lancashire',
       url: '/tyres',
       type: 'website'
     });

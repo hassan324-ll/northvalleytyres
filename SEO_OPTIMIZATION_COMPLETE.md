@@ -254,4 +254,4 @@ Add after getting verification code:
 
 **Happy ranking! 🎉**
 
-Your Colne Tyre Centre website is now fully optimized for SEO with SSR support, modern performance features, and all the best practices in place.
+Your North Valley Tyres website is now fully optimized for SEO with SSR support, modern performance features, and all the best practices in place.

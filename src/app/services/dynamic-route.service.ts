@@ -24,7 +24,7 @@ export class DynamicRouteService {
     this.metaService.updateMetaTags({
       title: productName,
       description: description,
-      keywords: `${productName}, tyres, car parts, prices`,
+      keywords: `${productName}, Cheap tyres Lancashire, Tyre prices Lancashire, Car accessories near me`,
       image: image,
       type: 'product'
     });

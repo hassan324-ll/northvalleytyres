@@ -16,7 +16,7 @@ Expected format:
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Colne Tyre Centre",
+  "name": "North Valley Tyres",
   ...
 }
 </script>
